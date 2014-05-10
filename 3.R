@@ -6,9 +6,9 @@ NEI <- readRDS("summarySCC_PM25.rds");
 
 SCC <- readRDS("Source_Classification_Code.rds");
 
-data <- sqldf("select type, year, SUM(Emissions) as emission from NEI where fips==24510 group by type, year order by type");
+data <- sqldf("select type, year, SUM(Emissions) as emission from NEI where fips==24510 group by type, year order by type, year");
 
-qplot(year,emission,data=data,color=type,geom="line", xlab="Year", ylab="Total Emissions (tons)")
+qplot(year,emission,data=data,color=type,geom="line", xlab="Year", ylab="Total Emissions (tons)");
 
 dev.copy(png,"3.png",width=480, height=480);
 
